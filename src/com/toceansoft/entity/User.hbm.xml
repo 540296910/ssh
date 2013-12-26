@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.toceansoft.entity"  >
+	<class name="User" table="users" lazy="false">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="username" column="USERNAME" length="20" unique="true" not-null="true"></property>
+		<property name="password" column="PASSWORD" length="20" not-null="true"></property>
+		<property name="age" column="age" length="20" ></property>
+	</class>	
+</hibernate-mapping>
