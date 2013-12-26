@@ -31,7 +31,10 @@ public class UserAction extends ActionSupport {
 		List<User> li= (List<User>) userService.login(user.getUsername());
 		if(!li.isEmpty())
 		{
-		return "success";}
+			if(li.get(0).getPassword().equals(user.getPassword())){
+		return "success";}else{
+			return "input";
+		}}
 		else{
 			return "input";
 		}
