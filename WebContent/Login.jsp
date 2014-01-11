@@ -7,13 +7,12 @@
 <style type="text/css">@import url(css/main.css);</style>
 </head>
 <body>
-<div >
-<s:actionerror />	
-	<form action="login.action" method="post">
-    	用户名:<input type="text" name="user.username"/><br/>
-    	密码:<input type="password" name="user.password"/><br/>
-    	<input type="submit" value="添加">
-	</form>
+<div >	
+<s:form action="login.action">
+	<s:textfield name="user.username" label="用户名"></s:textfield>
+	<s:password name="user.password" label="密码"></s:password>
+	<s:submit value="登录"></s:submit>
+</s:form>
 </div>
 
 </body>

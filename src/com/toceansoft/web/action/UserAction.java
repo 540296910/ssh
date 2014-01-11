@@ -2,6 +2,7 @@ package com.toceansoft.web.action;
 
 import java.util.List;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.toceansoft.entity.User;
 import com.toceansoft.service.IUserService;
@@ -9,35 +10,42 @@ import com.toceansoft.service.IUserService;
 public class UserAction extends ActionSupport {
 	private User user;
 	private IUserService userService;
-	
+
 	public User getUser() {
 		return user;
 	}
+
 	public void setUser(User user) {
 		this.user = user;
-	}	
-	
+	}
+
 	public IUserService getUserService() {
 		return userService;
 	}
+
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
 	}
-	public String add(){
+
+	public String add() {
 		userService.add(user);
 		return "success";
 	}
-	public String login(){
-		List<User> li= (List<User>) userService.login(user.getUsername());
-		if(!li.isEmpty())
-		{
-			if(li.get(0).getPassword().equals(user.getPassword())){
-		return "success";}else{
-			return "input";
-		}}
-		else{
+
+	public String login() {
+		List<User> li = (List<User>) userService.login(user.getUsername());
+		if (!li.isEmpty()) {
+		//	HttpSession session =null; 
+			if (li.get(0).getPassword().equals(user.getPassword())) {
+				ActionContext ctx = ActionContext.getContext();
+				ctx.getSession().put("username",user.getUsername());
+				return "success";
+			} else {
+				return "input";
+			}
+		} else {
 			return "input";
 		}
 	}
-	
+
 }

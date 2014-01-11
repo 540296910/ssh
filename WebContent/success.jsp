@@ -8,6 +8,6 @@
 </head>
 <body>
 	成功！！！
-
+	<s:debug></s:debug>
 </body>
 </html>
