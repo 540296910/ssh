@@ -12,6 +12,7 @@
     	</action> 
         <action name="User_add" class="userAction" method="add">
             <result>/success.jsp</result>
+            <result name="input">/regist.jsp</result>
         </action>
     </package>    
 </struts>

@@ -8,9 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<s:form>
-		<s:textfield name="user.username" label="用户名"></s:textfield>
+	<s:form action="User_add">
+		<s:textfield name="user.username" label="用户名">
+			<s:fielderror key="regist"></s:fielderror>
+		</s:textfield>
 		<s:password name="user.password" label="密码"></s:password>
+		<s:textfield name="user.age" label="年龄"></s:textfield>
 		<s:submit value="注册"></s:submit>
 	</s:form>
 </body>

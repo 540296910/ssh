@@ -2,6 +2,8 @@ package com.toceansoft.web.action;
 
 import java.util.List;
 
+import org.apache.struts2.components.FieldError;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.toceansoft.entity.User;
@@ -28,8 +30,12 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String add() {
-		userService.add(user);
-		return "success";
+		String result=userService.add(user);
+		if(result.equals("input")){
+			this.addFieldError("regist", "用户已存在！");
+			return INPUT;
+		}
+		return	SUCCESS;
 	}
 
 	public String login() {
