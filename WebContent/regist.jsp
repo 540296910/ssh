@@ -6,9 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.errorMessage{
+	list-style: none;
+}
+</style>
 </head>
 <body>
 	<s:form action="User_add">
+
 		<s:textfield name="user.username" label="用户名">
 			<s:fielderror key="regist"></s:fielderror>
 		</s:textfield>

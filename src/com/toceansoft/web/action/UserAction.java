@@ -35,6 +35,8 @@ public class UserAction extends ActionSupport {
 			this.addFieldError("regist", "用户已存在！");
 			return INPUT;
 		}
+		ActionContext ctx = ActionContext.getContext();
+		ctx.getSession().put("username",user.getUsername());
 		return	SUCCESS;
 	}
 
@@ -51,6 +53,14 @@ public class UserAction extends ActionSupport {
 			}
 		} else {
 			return "input";
+		}
+	}
+	public void validate(){
+		if(user.getAge()>100||user.getAge()<0){
+			addFieldError("age", "必须大于0小于100");
+		}
+		if(user.getUsername().equals("")){
+			addFieldError("username", "必须输入用户名");
 		}
 	}
 

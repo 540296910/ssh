@@ -19,7 +19,7 @@ public class TestSpringHibernate {
 		User u = new User();
 		u.setUsername("maolei");
 		u.setPassword("456123");
-		u.setAge("20");
+		u.setAge(20);
 		List<User> li=userDao.login(u.getUsername());
 		if(!li.isEmpty()){
 			for(int i=0;i<li.size();i++){

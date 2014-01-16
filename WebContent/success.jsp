@@ -8,6 +8,9 @@
 </head>
 <body>
 	成功！！！
+	<%out.print(session.getAttribute("username")); %>
+	
+	<s:property value="username"/>
 	<s:debug></s:debug>
 </body>
 </html>

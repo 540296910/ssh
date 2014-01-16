@@ -6,6 +6,21 @@
 <struts>
     
     <package name="ggf" namespace="/" extends="struts-default">
+    <interceptors>  
+            <interceptor name="authority"  
+                class="com.interceptor.LoginInterceptor">  
+            </interceptor>  
+            <!-- 拦截器栈 -->  
+            <interceptor-stack name="mydefault">  
+                <interceptor-ref name="defaultStack" />  
+                <interceptor-ref name="authority" />  
+            </interceptor-stack>  
+        </interceptors>  
+        <default-interceptor-ref name="authority"></default-interceptor-ref>
+         <global-results>  
+            <!-- 当返回login视图名时，转入/login.jsp页面 -->  
+            <result name="login">/Login.jsp</result>  
+        </global-results> 
     	<action name="login" class="userAction" method="login">
     		<result>/success.jsp</result>
     		<result name="input">/Login.jsp</result>

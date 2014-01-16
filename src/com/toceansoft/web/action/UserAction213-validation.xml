@@ -8,6 +8,13 @@
       </field-validator>
     
   </field>
+  <field name="user.age">
+      <field-validator type="int">
+          <param name="min">0</param>
+          <param name="max">100</param>
+          <message>Could not find foo.range!</message>
+      </field-validator>
+  </field>
  <!-- <field name="bar2">
       <field-validator type="regex">
           <param name="expression">[0-9],[0-9]</param>

@@ -3,17 +3,17 @@ package com.toceansoft.entity;
 
 public class User {
 	
-	private Integer id;	
+	private int id;	
 	private String username;	
 	private String password;
-	private String age;
-	public String getAge() {
+	private int age;
+	public int getAge() {
 		return age;
 	}
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 	public void setId(Integer id) {
