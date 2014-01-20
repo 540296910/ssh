@@ -16,7 +16,7 @@
                 <interceptor-ref name="authority" />  
             </interceptor-stack>  
         </interceptors>  
-        <default-interceptor-ref name="authority"></default-interceptor-ref>
+      
          <global-results>  
             <!-- 当返回login视图名时，转入/login.jsp页面 -->  
             <result name="login">/Login.jsp</result>  
@@ -24,10 +24,16 @@
     	<action name="login" class="userAction" method="login">
     		<result>/success.jsp</result>
     		<result name="input">/Login.jsp</result>
+    		 
     	</action> 
         <action name="User_add" class="userAction" method="add">
             <result>/success.jsp</result>
             <result name="input">/regist.jsp</result>
+        
+        </action>
+        <action name="purchase" class="purchaseAction" method="show">
+            <result>/index.jsp</result>
+        
         </action>
     </package>    
 </struts>

@@ -19,13 +19,20 @@
 	<bean id="userDao" class="com.toceansoft.dao.impl.UserDaoImpl">
 		<property name="mySessionFactory" ref="mySessionFactory"></property>
 	</bean>
-	
+	<bean id="poDao" class="com.toceansoft.dao.impl.PurchaseDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory"></property>
+	</bean>
 	<bean id="userService" class="com.toceansoft.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
-	
+	<bean id="purchaseService" class="com.toceansoft.service.impl.PurchaseServiceImpl">
+		<property name="pd" ref="poDao"></property>
+	</bean>
 	<bean id="userAction" class="com.toceansoft.web.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="purchaseAction" class="com.toceansoft.web.action.PurchaseAction" scope="prototype">
+		<property name="ps" ref="purchaseService" />
 	</bean>
 	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -64,6 +71,7 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/toceansoft/entity/User.hbm.xml</value>
+				<value>com/toceansoft/entity/Purchase_order.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

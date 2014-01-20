@@ -9,7 +9,7 @@
 <body>
 	成功！！！
 	<%out.print(session.getAttribute("username")); %>
-	
+	<a href="purchase">点击</a>
 	<s:property value="username"/>
 	<s:debug></s:debug>
 </body>
