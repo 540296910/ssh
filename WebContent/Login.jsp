@@ -5,20 +5,27 @@
 <head>
 <title>Login Form</title>
 <style type="text/css">@import url(css/main.css);
-	body{
-		background-color: #EBEBEB;
+	html{
+	background: url(image/log_bg1.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
 	}
 	.one{
-		background-color: #C2C2C2;
 		width: 240px;
 		height:130px;
 		margin:0px auto;
 		margin-top: 30%;
 		border-style: groove;
+		opacity: 0.5; background-color:#1C86EE; 
+		
 	}
 	.rs{
+		opacity:1.0;
 		margin-top: 10px;
 		margin-bottom: 10px;
+		z-index:100;
 		background-color: #C6E2FF;
 	}
 </style>

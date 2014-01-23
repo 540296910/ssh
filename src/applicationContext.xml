@@ -16,10 +16,29 @@
 		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>	
 	</bean>		
 	 -->
+	  <aop:config>  
+        <aop:aspect id="TestAspect" ref="aspectBean">  
+            <!--配置com.spring.service包下所有类或接口的所有方法-->  
+            <aop:pointcut id="businessService"  
+                expression="execution(* com.toceansoft.service.*.*(..)) and args(cd)" />  
+            <aop:before pointcut-ref="businessService" method="doBefore"/>  
+         <!-- 
+            <aop:after pointcut-ref="businessService" method="doAfter"/>  
+            <aop:around pointcut-ref="businessService" method="doAround"/>  
+          -->
+        </aop:aspect>  
+    </aop:config>  
+      
+    <bean id="aspectBean" class="com.spring.aop.TestAspect" />  
+    <bean id="aService" class="com.spring.aop.AServiceImpl"></bean>   
+  
 	<bean id="userDao" class="com.toceansoft.dao.impl.UserDaoImpl">
 		<property name="mySessionFactory" ref="mySessionFactory"></property>
 	</bean>
 	<bean id="poDao" class="com.toceansoft.dao.impl.PurchaseDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory"></property>
+	</bean>
+	<bean id="cdsDao" class="com.toceansoft.dao.impl.CdsgusDaoImpl">
 		<property name="mySessionFactory" ref="mySessionFactory"></property>
 	</bean>
 	<bean id="userService" class="com.toceansoft.service.impl.UserServiceImpl">
@@ -27,6 +46,9 @@
 	</bean>
 	<bean id="purchaseService" class="com.toceansoft.service.impl.PurchaseServiceImpl">
 		<property name="pd" ref="poDao"></property>
+	</bean>
+	<bean id="cdsService" class="com.toceansoft.service.impl.CdsgusServiceImpl">
+		<property name="cd" ref="cdsDao"></property>
 	</bean>
 	<bean id="userAction" class="com.toceansoft.web.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService" />
@@ -40,7 +62,7 @@
 		<value>com.mysql.jdbc.Driver</value>
 		</property>
 		<property name="jdbcUrl">
-		<value>jdbc:mysql://localhost:3306/test</value>
+		<value>jdbc:mysql://localhost:3306/hotel</value>
 		</property>
 		<property name="user">
 		<value>root</value>
@@ -72,6 +94,7 @@
 			<list>
 				<value>com/toceansoft/entity/User.hbm.xml</value>
 				<value>com/toceansoft/entity/Purchase_order.hbm.xml</value>
+				<value>com/toceansoft/entity/Cdsgus.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
